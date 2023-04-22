@@ -18,7 +18,7 @@ import ProductsImg from "../components/sections/productsImg"
 export default function index() {
   return (
     <Layout>
-      <SEO title="home " description="" />
+      <SEO title="home " description=" " />
       {/* <HeroSlider />
       <MainServicesLinks />
       <AllServicesBanner />
