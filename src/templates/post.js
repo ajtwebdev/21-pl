@@ -161,7 +161,7 @@ const NewsTemplate = pageProps => {
           <HeroBannerPadding />
           <BannerGrid>
             <BannerWrapper
-              img={data.bannerImage.localFile.childImageSharp.fluid.src}
+              img={data.bannerImage.localFile.childImageSharp.gatsbyImageData.src}
             >
               <Container className="spacing">
                 <BannerText className="spacing">
@@ -267,30 +267,26 @@ const NewsTemplate = pageProps => {
         </Container>
       </Section>
     </Layout>
-  )
+  );
 }
 
 export default NewsTemplate
 
-export const query = graphql`
-  query PostQuery($id: String!) {
-    wpPost(id: { eq: $id }) {
-      title
-      date
-      post {
-        bannerImage {
-          localFile {
-            childImageSharp {
-              fluid {
-                src
-              }
-            }
+export const query = graphql`query PostQuery($id: String!) {
+  wpPost(id: {eq: $id}) {
+    title
+    date
+    post {
+      bannerImage {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
           }
         }
-        title
-        excerpt
-        content
       }
+      title
+      excerpt
+      content
     }
   }
-`
+}`

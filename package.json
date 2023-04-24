@@ -12,6 +12,7 @@
     "@wordpress/block-library": "^8.8.0",
     "bootstrap": "^5.2.3",
     "chokidar": "^3.5.3",
+    "cross-env": "^7.0.3",
     "framer-motion": "^10.12.4",
     "gatsby": "^5.9.0",
     "gatsby-plugin-image": "^3.9.0",
@@ -52,7 +53,7 @@
   ],
   "license": "0BSD",
   "scripts": {
-    "build": "gatsby build",
+    "build": "cross-env GATSBY_CPU_COUNT=2 NODE_OPTIONS=--max_old_space_size=4096 gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
     "start": "gatsby develop",

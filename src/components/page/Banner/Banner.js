@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Container, Actions, HeroBannerPadding } from "../../layoutComponents"
 import { ButtonPrimary, AnchorInline } from "../../buttons"
 import Breadcrumb from "../../Breadcrumb/Breadcrumb"
-import { StaticImage } from "gatsby-plugin-image"
+import { StaticImage, getImage, getSrc } from "gatsby-plugin-image"
 
 const BannerGrid = styled.div`
   display: grid;
@@ -19,8 +19,8 @@ const Wrapper = styled.div`
   grid-row: 1 / -1;
   grid-column: 1 / -1;
   z-index: 1;
-  // background: ${props => `url(${props.img})`}, rgba(0, 0, 0, 0.4);
-  background: url("../../../images/hero.jpg")), rgba(0, 0, 0, 0.4);
+  background: ${props => `url(${props.img})`}, rgba(0, 0, 0, 0.4);
+  //background: url("../../../images/hero.jpg")), rgba(0, 0, 0, 0.4);
   background-blend-mode: overlay;
   background-position: center;
   background-size: cover;
@@ -62,7 +62,7 @@ export default function Banner({ title, subheader, description, image }) {
     <div>
       <HeroBannerPadding />
       <BannerGrid>
-        <Wrapper img={image.localFile.childImageSharp.fluid.src}>
+        <Wrapper img={getSrc(image)}>
           <Container className="spacing">
             <Text className="spacing">
               <div className="">
@@ -80,5 +80,5 @@ export default function Banner({ title, subheader, description, image }) {
         </BannerBottomText>
       </BannerGrid>
     </div>
-  )
+  );
 }
