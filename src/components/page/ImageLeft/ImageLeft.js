@@ -1,4 +1,4 @@
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
 import { Container, Section, FlexMobileOpp } from "../../layoutComponents"
@@ -13,16 +13,22 @@ const StyledImg = styled(GatsbyImage)`
 `
 
 export default function ImageLeft({ subheader, title, body, image }) {
+  const img = getImage(image)
   return (
     <Section>
       <Container>
         <FlexMobileOpp>
-          <StaticImage src="../../../images/ph.jpg" className="stretch" />
-          {/* <StyledImg
+          {/*<StaticImage src="../../../images/ph.jpg" className="stretch" />
+          <StyledImg
             image={image.localFile.childImageSharp.gatsbyImageData}
             alt={image.altText}
             className="stretch"
           /> */}
+          <StyledImg
+            image={img}
+            alt=""
+            className="stretch"
+          />
           <Text className="spacing">
             <div>
               <p className="subheader accent">{subheader}</p>

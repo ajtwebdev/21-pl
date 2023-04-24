@@ -1,4 +1,4 @@
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
 import { Container, Section, Flex } from "../../layoutComponents"
@@ -14,6 +14,7 @@ const StyledImg = styled(GatsbyImage)`
 `
 
 export default function ImageRight({ subheader, title, body, image }) {
+  const img = getImage(image)
   return (
     <Section>
       <Container>
@@ -38,7 +39,12 @@ export default function ImageRight({ subheader, title, body, image }) {
             alt={image.altText}
             className="stretch"
           /> */}
-          <StaticImage src="../../../images/ph.jpg" className="stretch" />
+          {/*<StaticImage src="../../../images/ph.jpg" className="stretch" /> */}
+          <StyledImg
+            image={img}
+            alt=""
+            className="stretch"
+          />
         </Flex>
       </Container>
     </Section>
